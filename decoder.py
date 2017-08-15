@@ -37,7 +37,7 @@ def api_decode(txid, nout):
 def api_decodebyclaim(claimid):
     connection_string = get_lbrycrdd_connection_details()
     rpc = AuthServiceProxy(connection_string)
-    claim = rpc.getvalueforname(claimid)
+    claim = rpc.getclaimbyid(claimid)
     if claim:
         converted = "".join([chr(ord(i)) for i in claim['value']])
         decoded = smart_decode(converted) # Decode the claims and dump them back to logstash plugin
